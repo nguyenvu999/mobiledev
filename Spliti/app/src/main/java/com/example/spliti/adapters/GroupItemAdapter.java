@@ -2,6 +2,7 @@ package com.example.spliti.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spliti.R;
+import com.example.spliti.activities.GroupDetail;
 import com.example.spliti.models.Group;
 import com.example.spliti.utils.ColorUtils;
 
@@ -58,6 +60,11 @@ public class GroupItemAdapter extends RecyclerView.Adapter<GroupItemAdapter.Grou
                 break;
         }
 
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, GroupDetail.class);
+            intent.putExtra("GROUP_NAME", groupItem.getName());
+            context.startActivity(intent);
+        });
     }
 
 

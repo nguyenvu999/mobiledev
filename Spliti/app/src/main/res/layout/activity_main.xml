@@ -60,7 +60,7 @@
             android:src="@drawable/ic_search_24"
             android:contentDescription="Search Button"
             android:layout_weight="1"
-            />
+            app:tint="@color/gray" />
 
         <EditText
             android:id="@+id/searchField"
