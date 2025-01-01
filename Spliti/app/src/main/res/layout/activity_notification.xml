@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ProfileActivity"
-    android:backgroundTint="@color/background">
+    tools:context=".activities.NotificationActivity">
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         android:background="@color/white"
         android:padding="18dp"
         android:gravity="center_vertical"
-    >
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,69 +27,18 @@
         </TextView>
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/navBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/notification_item_recycler_view"
         app:layout_constraintTop_toBottomOf="@id/topBar"
-        android:gravity="center_horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/navBar"
+        android:paddingHorizontal="8dp"
+        />
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_person_24"
-            android:layout_marginTop="16dp"
-        >
-        </ImageView>
-
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sarah Johnson"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:textSize="20sp">
-        </TextView>
-
-        <TextView
-            android:id="@+id/emailText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sarah.jonhson@gmail.com"
-            android:layout_marginTop="16dp"
-            android:textStyle=""
-            android:textSize="18sp">
-        </TextView>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/primary"
-            android:text="Update information"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="24dp"
-        >
-        </Button>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/red"
-            android:text="Logout"
-            android:textSize="18sp"
-            android:layout_marginHorizontal="24dp"
-            android:drawableEnd="@drawable/ic_logout_24"
-            android:paddingHorizontal="135dp"
-            android:drawableTint="@color/white"
-        >
-        </Button>
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/navBar"
@@ -124,12 +72,12 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:drawableTop="@drawable/ic_notifications_24"
-            android:drawableTint="@color/black"
+            android:drawableTint="@color/primary"
             android:drawablePadding="8dp"
             android:gravity="center"
             android:padding="12dp"
             android:text="Notifications"
-            android:textColor="@color/black"
+            android:textColor="@color/primary"
             android:textSize="14sp" />
         <Button
             android:id="@+id/buttonProfile"
@@ -138,13 +86,12 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:drawableTop="@drawable/ic_person_24"
-            android:drawableTint="@color/primary"
+            android:drawableTint="@color/black"
             android:drawablePadding="8dp"
             android:gravity="center"
             android:padding="12dp"
             android:text="Profile"
-            android:textColor="@color/primary"
+            android:textColor="@color/black"
             android:textSize="14sp"/>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

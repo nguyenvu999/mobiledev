@@ -2,16 +2,15 @@ package com.example.spliti;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.spliti.activities.CreateGroup;
+import com.example.spliti.activities.CreateGroupActivity;
+import com.example.spliti.activities.NotificationActivity;
+import com.example.spliti.activities.ProfileActivity;
 import com.example.spliti.adapters.GroupItemAdapter;
 import com.example.spliti.models.Group;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button buttonProfile = findViewById(R.id.buttonProfile);
+        buttonProfile.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+        });
+
+        Button buttonNotification = findViewById(R.id.buttonNotifications);
+        buttonNotification.setOnClickListener(v -> {
+            startActivity(new Intent(this, NotificationActivity.class));
+        });
 
         recyclerView = findViewById(R.id.groupdRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // Set click listener for FAB
         fabAddGroup.setOnClickListener(view -> {
             // Start CreateGroup activity
-            Intent intent = new Intent(MainActivity.this, CreateGroup.class);
+            Intent intent = new Intent(MainActivity.this, CreateGroupActivity.class);
             startActivity(intent);
         });
     }

@@ -1,7 +1,6 @@
 package com.example.spliti.activities;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,7 +15,7 @@ import com.example.spliti.models.User;
 
 import java.util.ArrayList;
 
-public class CreateGroup extends AppCompatActivity {
+public class CreateGroupActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private UserItemAdapter adapter;

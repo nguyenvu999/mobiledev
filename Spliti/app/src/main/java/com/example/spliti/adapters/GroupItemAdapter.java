@@ -14,9 +14,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spliti.R;
-import com.example.spliti.activities.GroupDetail;
+import com.example.spliti.activities.GroupDetailActivity;
 import com.example.spliti.models.Group;
-import com.example.spliti.utils.ColorUtils;
 
 import java.util.ArrayList;
 
@@ -61,7 +60,7 @@ public class GroupItemAdapter extends RecyclerView.Adapter<GroupItemAdapter.Grou
         }
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, GroupDetail.class);
+            Intent intent = new Intent(context, GroupDetailActivity.class);
             intent.putExtra("GROUP_NAME", groupItem.getName());
             context.startActivity(intent);
         });

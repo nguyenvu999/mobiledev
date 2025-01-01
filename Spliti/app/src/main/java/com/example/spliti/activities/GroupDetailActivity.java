@@ -1,6 +1,5 @@
 package com.example.spliti.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,7 +17,7 @@ import com.example.spliti.models.User;
 
 import java.util.ArrayList;
 
-public class GroupDetail extends AppCompatActivity {
+public class GroupDetailActivity extends AppCompatActivity {
 
     private RecyclerView expensesRecyclerView, membersRecyclerView;
     private ExpenseItemAdapter expenseAdapter;
