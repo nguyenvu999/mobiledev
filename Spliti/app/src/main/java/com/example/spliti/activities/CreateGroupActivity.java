@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class CreateGroupActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private UserItemAdapter adapter;
+    private RecyclerView membersRecyclerView;
+    private UserItemAdapter userAdapter;
     private ArrayList<User> users;
     private EditText addField;
     private ImageView addButton;
@@ -28,36 +28,48 @@ public class CreateGroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
 
+        // Initialize UI components
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(v -> finish());
 
         addField = findViewById(R.id.addField);
         addButton = findViewById(R.id.addButton);
-        recyclerView = findViewById(R.id.userRecyclerView);
+        membersRecyclerView = findViewById(R.id.userRecyclerView);
 
-        users = new ArrayList<>();
-        adapter = new UserItemAdapter(
-                this,
-                users,
-                position -> {
-                    // Remove user from the list
-                    users.remove(position);
-                    adapter.notifyItemRemoved(position);
-                },
-                true
-        );
+        setupMembersRecyclerView();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-
+        // Add member button logic
         addButton.setOnClickListener(v -> {
             String email = addField.getText().toString();
             if (!email.isEmpty()) {
-                // Add a new user (for simplicity, using email as the name too)
+                // Add a new user with email as placeholder for name
                 users.add(new User("New User", email));
-                adapter.notifyItemInserted(users.size() - 1);
+                userAdapter.notifyItemInserted(users.size() - 1);
                 addField.setText("");
             }
         });
+    }
+
+    private void setupMembersRecyclerView() {
+        // Initialize members list
+        users = new ArrayList<>();
+        users.add(new User("Alice", "alice@example.com"));
+        users.add(new User("Bob", "bob@example.com"));
+
+        // Initialize adapter with SHOW_CLEAR_BUTTON mode
+        userAdapter = new UserItemAdapter(
+                this,
+                users,
+                position -> {
+                    // Remove user on delete button click
+                    users.remove(position);
+                    userAdapter.notifyItemRemoved(position);
+                },
+                UserItemAdapter.AdapterMode.SHOW_CLEAR_BUTTON
+        );
+
+        // Setup RecyclerView
+        membersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        membersRecyclerView.setAdapter(userAdapter);
     }
 }

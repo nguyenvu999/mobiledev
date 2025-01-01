@@ -1,5 +1,6 @@
 package com.example.spliti.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ import com.example.spliti.adapters.ExpenseItemAdapter;
 import com.example.spliti.adapters.UserItemAdapter;
 import com.example.spliti.models.Expense;
 import com.example.spliti.models.User;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class GroupDetailActivity extends AppCompatActivity {
     private ArrayList<Expense> expenses;
     private ArrayList<User> users;
     private Button membersTabButton, expensesTabButton;
+    FloatingActionButton createExpenseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,11 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         ImageButton buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(v -> finish());
+
+        createExpenseButton = findViewById(R.id.fabAddExpense);
+        createExpenseButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, CreateExpense.class));
+        });
 
         // Retrieve the group name from the Intent
         String groupName = getIntent().getStringExtra("GROUP_NAME");
@@ -70,16 +78,18 @@ public class GroupDetailActivity extends AppCompatActivity {
 
     private void setupMembersRecyclerView() {
         membersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
         users.add(new User("Alice", "alice@example.com"));
         users.add(new User("Bob", "bob@example.com"));
         users.add(new User("Charlie", "charlie@example.com"));
+
         userAdapter = new UserItemAdapter(this, users, position -> {
             users.remove(position);
             userAdapter.notifyItemRemoved(position);
-        }, false);
+        }, UserItemAdapter.AdapterMode.DEFAULT);
         membersRecyclerView.setAdapter(userAdapter);
     }
+
 
     private void switchToMembersTab() {
         // Show members and hide expenses

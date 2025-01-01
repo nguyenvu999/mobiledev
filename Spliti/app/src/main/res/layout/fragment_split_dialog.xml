@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/fragmentHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modify split amount for: "
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input mode"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp">
+    </TextView>
+
+    <ToggleButton
+        android:id="@+id/toggleInputMode"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textOff="Percentage %"
+        android:textOn="Raw Value $"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/card_border_background"
+        android:elevation="2dp"/>
+
+    <EditText
+        android:id="@+id/inputField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter percentage (e.g., 50%)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/primary"/>
+</LinearLayout>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Spliti</string>
+    <string-array name="expense_categories">
+        <item>Food</item>
+        <item>Transport</item>
+        <item>Accommodation</item>
+        <item>Shopping</item>
+        <item>Entertainment</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
+    <string-array name="members_list">
+        <item>You</item>
+        <item>John Smith</item>
+        <item>Jane Doe</item>
+        <item>Alex Brown</item>
+    </string-array>
+
 </resources>
